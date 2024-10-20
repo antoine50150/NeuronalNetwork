@@ -55,4 +55,38 @@ class Reseau:
         def get_last_couche(self):
             return self.values[-1]
         
+        def set_couche(self, value=2):
+            if (self.control==0):
+                if(value>=2):
+                    for i in range (0,value):
+                        self.couche.append(0)
+                else:
+                    print("Must have at least 2 layers")
+            else:
+                print("Network is already existing, you cant edit it")
+
+        def add_couche(self,pos):
+            if (self.control == 0):
+                if (pos>=0 and pos<len(self.couche)):
+                    self.couche.insert(pos,0)
+                else:
+                    print("You can add a layer between [0,",len(self.couche),"]")
+            else:
+                print("Network is already existing, you cant edit it")
+
+        def add_neurone(self,couche,nbr=1):
+            if (self.control==0):
+                if(couche>=0 and couche <=len(self.couche)-1 and nbr>0):
+                    self.couche[couche] += nbr
+            else:
+                print("Network is already existing, you cant edit it")
         
+        def add_all_neurone(self,tab):
+            if (self.control==0):
+                if(len(tab) == len(self.couche)):
+                    for i in range (0, len(tab)):
+                        self.add_neurone(i,tab[i])
+                else:
+                    print("Tab must be ",len(self.couche)," long")
+            else:
+                print("Network is already existing, you cant edit it")
