@@ -47,46 +47,46 @@ class Reseau:
             return self.name_fun_learn
         
         def get_data(self):
-            return [self.get_name(),self.get_name_fun_learn(),self.get_erreur(),self.get_nbr_couche()]
+            return [self.get_name(),self.get_name_fun_learn(),self.get_erreur(),self.get_nbr_layer()]
         
-        def get_nbr_couche(self):
-            return len(self.couche)
+        def get_nbr_layer(self):
+            return len(self.layer)
         
-        def get_last_couche(self):
+        def get_last_layer(self):
             return self.values[-1]
         
-        def set_couche(self, value=2):
+        def set_layer(self, value=2):
             if (self.control==0):
                 if(value>=2):
                     for i in range (0,value):
-                        self.couche.append(0)
+                        self.layer.append(0)
                 else:
                     print("Must have at least 2 layers")
             else:
                 print("Network is already existing, you cant edit it")
 
-        def add_couche(self,pos):
+        def add_layer(self,pos):
             if (self.control == 0):
-                if (pos>=0 and pos<len(self.couche)):
-                    self.couche.insert(pos,0)
+                if (pos>=0 and pos<len(self.layer)):
+                    self.layer.insert(pos,0)
                 else:
-                    print("You can add a layer between [0,",len(self.couche),"]")
+                    print("You can add a layer between [0,",len(self.layer),"]")
             else:
                 print("Network is already existing, you cant edit it")
 
-        def add_neurone(self,couche,nbr=1):
+        def add_neurone(self,layer,nbr=1):
             if (self.control==0):
-                if(couche>=0 and couche <=len(self.couche)-1 and nbr>0):
-                    self.couche[couche] += nbr
+                if(layer>=0 and layer <=len(self.layer)-1 and nbr>0):
+                    self.layer[layer] += nbr
             else:
                 print("Network is already existing, you cant edit it")
         
         def add_all_neurone(self,tab):
             if (self.control==0):
-                if(len(tab) == len(self.couche)):
+                if(len(tab) == len(self.layer)):
                     for i in range (0, len(tab)):
                         self.add_neurone(i,tab[i])
                 else:
-                    print("Tab must be ",len(self.couche)," long")
+                    print("Tab must be ",len(self.layer)," long")
             else:
                 print("Network is already existing, you cant edit it")
