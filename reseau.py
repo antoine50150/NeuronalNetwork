@@ -1,25 +1,32 @@
 from fonctions import sigmoide, tangente
 class Reseau:
-    def __init__(self, name='Reseau1', learn='sigmoide', error=0.001):
+    def __init__(self, name='Network_1', learn='sigmoide', error=0.001):
         """
+            ENGLISH
+            # We initialise the network, with theses parameters:
+                - a name, just for information purposes
+                - the activation fonction wanted at the start
+                - the error wanted during learning phases
+ 
+            FRENCH
             # On initialise le réseau, avec pour paramètres:
                 - un nom, à titre informatif
                 - la fonction d'activation voulu au début
-                - l'erreur désirée lors des phases d'apprentissage
+                - l'erreur désirée lors des phases d'apprentissage   
         """
 
-        self.name = name # Nom du réseau
+        self.name = name # Network name
         if 'tangente' == str.lower(learn):
             self.fun_learn = tangente
             self.name_fun_learn = 'tangente'
         else:
             self.fun_learn = sigmoide
             self.name_fun_learn = 'sigmoide'
-        self.error = error # Erreur d'apprentissage
-        self.couche = [] # Tableau de couche pavec le nombre de neurones par couches
-        self.link = [] # Tableau avec tous les poids
-        self.values = [] # Tableau avec les différentes valeurs des neurones
-        self.control = 0 #Controleur d'ajout de couches/neurones après initialisation
+        self.error = error # learning error
+        self.couche = [] # Tab of layer with the nbr of neurons per layers
+        self.link = [] # Tab with every weights
+        self.values = [] # Tab with the differents neurons values
+        self.control = 0 # Controler is adding layers/neurons after initialisation
 
         """
             # Getters / Setters
